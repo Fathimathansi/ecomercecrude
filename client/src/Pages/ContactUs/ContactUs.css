@@ -1,0 +1,33 @@
+.contactus_content{
+  color: rgba(118, 125, 125, 0.767);
+}
+.help_center{
+  width: 700px;
+  height: 400px;
+  margin-bottom: 20px;
+  background-color: rgba(219, 231, 240, 0.415);
+ 
+}
+.full_contactus{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contact_image{
+  width: 200px;
+  
+}
+.contact_us{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.loginbtn{
+ text-decoration: none; 
+ color: white;
+ background-color: black;
+ width: 100px;
+ border-radius: 5px;
+}

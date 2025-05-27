@@ -1,0 +1,26 @@
+.footer_content{
+    text-decoration: none;
+    color: white;
+    font-size: 10px;
+}
+.footer{
+    font-size: smaller;
+    background-color: rgb(25, 25, 32);
+   
+}
+.footer_baground{
+    background-color: rgb(10, 10, 10);
+}
+.congo{
+    color: rgb(226, 181, 57);
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.full_font{
+    font-family: 'Times New Roman', Times, serif;
+}
+.icons{
+    color: white;
+    margin-left: 8px;
+    
+}

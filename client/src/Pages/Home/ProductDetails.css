@@ -1,0 +1,41 @@
+.card{
+    width: 500px;
+   
+}
+
+
+
+.product-details-page{
+    width: 200px;
+}
+.products{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    
+   
+}
+.product-title{
+    padding-left: 100px;
+   
+}
+.addcart{
+    width: 100px;
+    height: 50px;
+    margin-left: 100px;
+    border-radius: 5px;
+    background-color: rgb(6, 5, 5);
+    border: none;
+    color: white;
+    margin-bottom: 60px;
+}
+.buynow{
+    width: 100px;
+    height: 50px;
+   margin-left: 100px;
+   border-radius: 5px;
+   background-color: rgb(244, 182, 12);
+   border: none;
+   margin-bottom: 10px;
+}

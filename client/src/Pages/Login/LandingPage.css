@@ -1,0 +1,99 @@
+
+.landing_page {
+  background-image: url('./shopping.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  position: relative;
+}
+
+
+.landing_content {
+  position: absolute;
+  top: -100%;
+  width: 100%;
+  color: azure;
+  text-align: center;
+  padding: 0 20px;
+  transition: top 1s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  z-index: 1;
+}
+
+/* When animation is triggered */
+.landing_content.slide-in {
+  top: 0;
+}
+
+.body_heading {
+  font-size: 80px;
+  font-weight: bold;
+  font-family: 'Times New Roman', Times, serif;
+  margin-bottom: 20px;
+}
+
+.body_content {
+  font-size: 30px;
+  font-family: 'Times New Roman', Times, serif;
+  margin-bottom: 10px;
+}
+
+.body_content1 {
+  font-size: 15px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.landing_button {
+  width: 250px;
+  height: 50px;
+  background-color: rgb(226, 181, 57);
+  color: azure;
+  border-radius: 50px;
+}
+
+@media (max-width: 600px) {
+  .body_heading {
+    font-size: 40px;
+  }
+  .body_content {
+    font-size: 30px;
+  }
+  .body_content1 {
+    font-size: 15px;
+  }
+  .landing_button {
+    width: 150px;
+    height: 30px;
+    font-size: 10px;
+  }
+  .landing_content {
+    top: 100px;
+  }
+}
+
+.landing_cards .card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.landing_cards .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+  max-height: 250px;
+  object-fit: cover;
+}
+.landing_cards{
+ margin-left: 100px;
+}
+.shop-now{
+  background-color: black;
+  color: white;
+}
