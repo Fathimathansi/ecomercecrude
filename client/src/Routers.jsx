@@ -12,17 +12,63 @@ import AboutUs from './Pages/AboutUs/AboutUs'
 import LandingPage from './Pages/Login/Landingpage'
 import Termsofcondition from './Pages/Termsofcondition/Termsofcondition'
 import ProductDetails from './Pages/Home/ProductDetails'
+import IntroPage from './Pages/Login/IntroPage'
+
+
+import AdminDashboard from './Pages/Admin/AdminDashboard'
+import Loginpage from './Pages/Seller/Loginpage'
+import Signupage from './Pages/Seller/Signupage'
+import Forgetpage from './Pages/Seller/Forgetpage'
+import Resetpage from './Pages/Seller/Resetpage'
+import Orderlist from './Pages/Seller/Orderlist'
+import SellerDashboard from './Pages/Seller/Sellerdashboard'
+import ProductList from './Pages/Seller/ProductList'
+import Adminlogin from './Pages/Admin/Adminlogin'
+import TotalUsers from './Pages/Admin/TotalUsers'
+import TotalProducts from './Pages/Admin/TotalProducts'
+import TotalSellers from './Pages/Admin/TotalSellers'
+import AddProduct from './Pages/Seller/AddProduct'
+import UpdateProduct from './Pages/Seller/updateProduct'
+import AddtoCart from './Pages/Home/AddtoCart'
+import BuyOne from './Pages/Home/BuyOne'
+import Homepage from './Pages/Home/Homepage'
+import BuyNow from './Pages/Home/BuyNow'
+import UserProfile from './Components/Navbar/UserProfile'
+import UpdateUserProfile from './Components/Navbar/UpdateUserProfile'
+import SellerProfile from './Pages/Seller/SellerProfile'
+import UpdateSellerProfile from './Pages/Seller/UpdateSellerProfile'
+import AdminNav from './Components/Navbar/AdminNav'
+import SellerNav from './Components/Navbar/SellerNav'
+
+import LoginNav from './Components/Navbar/LoginNav'
+import NewRegistration from './Pages/Admin/NewRegistration'
+import FrontNav from './Components/Navbar/FrontNav'
+import HomeNav from './Components/Navbar/HomeNav'
+import Orders from './Pages/Login/Orders'
+
+
+
 
 function Routers() {
   return (
     <div>
       <BrowserRouter>
       <Routes>
-       
+          
       <Route path='/'
       element={
         <>
-        <Navbar/>
+      
+        <IntroPage/>
+      
+        </>
+      }>
+       </Route>
+       
+      <Route path='/landing'
+      element={
+        <>
+        <FrontNav/>
         <LandingPage/>
         <Footer/>
         </>
@@ -75,7 +121,7 @@ function Routers() {
         <Route path='/contactus'
         element={
           <>
-          <Navbar/>
+          <FrontNav/>
           <ContactUs/>
           <Footer/>
           </>
@@ -83,7 +129,7 @@ function Routers() {
 
         </Route>
 
-        <Route path='/home'
+        <Route path='/home/:category'
         element={
           <>
        
@@ -96,7 +142,7 @@ function Routers() {
         <Route path='/aboutus'
         element={
           <>
-          <Navbar/>
+          <FrontNav/>
           <AboutUs/>
           <Footer/>
           </>
@@ -129,6 +175,333 @@ function Routers() {
         }>
 
         </Route>
+
+        
+
+
+
+         <Route path='/admindashboard'
+        element={
+          <>
+          <AdminNav/>
+          <AdminDashboard/>
+          <Footer/>
+          </>
+        }>
+
+        </Route>
+
+        
+        <Route path='/loginpage' 
+        element={
+            <>
+            <Navbar/>
+            <Loginpage/>
+            <Footer/>
+            </>
+        }
+        >
+
+        </Route>
+
+        
+        <Route path='/signupage' 
+        element={
+            <>
+            <SellerNav/>
+            <Signupage/>
+            <Footer/>
+            </>
+        }
+        >
+
+        </Route>
+
+        <Route path='/forgetpage' 
+        element={
+            <>
+            <Navbar/>
+            <Forgetpage/>
+            <Footer/>
+            </>
+        }
+        >
+
+        </Route>
+
+  <Route path='/resetpage' 
+        element={
+            <>
+            <Navbar/>
+            <Resetpage/>
+            <Footer/>
+            </>
+        }
+        >
+
+        </Route>
+
+        
+  <Route path='/orderlist' 
+        element={
+            <>
+            <SellerNav/>
+            <Orderlist/>
+            <Footer/>
+            </>
+        }
+        >
+
+        </Route>
+
+
+
+              
+  <Route path='/sellerdashboard' 
+        element={
+            <>
+            <SellerNav/>
+            <SellerDashboard/>
+            <Footer/>
+            </>
+        }
+        >
+
+        </Route>
+
+                   
+  <Route path='/productlist' 
+        element={
+            <>
+            <SellerNav/>
+            <ProductList/>
+            <Footer/>
+            </>
+        }
+        >
+
+        </Route>
+
+ <Route path='/adminlogin' 
+        element={
+            <>
+          <LoginNav/>
+            <Adminlogin/>
+            <Footer/>
+            </>
+        }
+        >
+
+        </Route>
+        <Route path='/totalsellers' 
+        element={
+            <>
+            <AdminNav/>
+            <TotalSellers/>
+            <Footer/>
+            </>
+        }
+        >
+
+        </Route>
+        <Route path='/totalproducts' 
+        element={
+            <>
+            <AdminNav/>
+            <TotalProducts/>
+            <Footer/>
+            </>
+        }
+        >
+
+        </Route>
+        <Route path='/totalusers' 
+        element={
+            <>
+            <AdminNav/>
+            <TotalUsers/>
+            <Footer/>
+            </>
+        }
+        >
+
+        </Route>
+
+ <Route path='/addproduct' 
+        element={
+            <>
+             <SellerNav/>
+            <AddProduct/>
+             <Footer/>
+            </>
+        }
+        >
+
+        </Route>
+
+
+         <Route path='/updateproduct/:id' 
+        element={
+            <>
+
+            <UpdateProduct/>
+
+            </>
+        }
+        >
+
+        </Route>
+
+        <Route path='/addtocart/:id' 
+        element={
+            <>
+            <Navbar/>
+            <AddtoCart/>
+            <Footer/>
+
+            </>
+        }
+        >
+
+        </Route>
+
+
+
+
+        
+        <Route path='/buyone/:id' 
+        element={
+            <>
+            <Navbar/>
+            <BuyOne/>
+            <Footer/>
+
+            </>
+        }
+        >
+
+        </Route>
+
+
+          
+        <Route path='/homepage' 
+        element={
+            <>
+            <HomeNav/>
+            <Homepage/>
+            <Footer/>
+
+            </>
+        }
+        >
+
+        </Route>
+
+
+        <Route path='/buynow' 
+        element={
+            <>
+            <Navbar/>
+            <BuyNow/>
+            <Footer/>
+
+            </>
+        }
+        >
+
+        </Route>
+
+
+         <Route path='/userprofile' 
+        element={
+            <>
+            <Navbar/>
+            <UserProfile/>
+            <Footer/>
+
+            </>
+        }
+        >
+
+        </Route>
+
+
+        <Route path='/updateuserprofile/:id' 
+        element={
+            <>
+            <Navbar/>
+            <UpdateUserProfile/>
+            <Footer/>
+
+            </>
+        }
+        >
+
+        </Route>
+
+
+
+          <Route path='/sellerprofile' 
+        element={
+            <>
+            <SellerNav/>
+            <SellerProfile/>
+            <Footer/>
+
+            </>
+        }
+        >
+
+        </Route>
+
+        
+        <Route path='/updatesellerprofile/:id' 
+        element={
+            <>
+            <SellerNav/>
+            <UpdateSellerProfile/>
+            <Footer/>
+
+            </>
+        }
+        >
+
+        </Route>
+
+
+         <Route path='/newregistration' 
+        element={
+            <>
+            <AdminNav/>
+            <NewRegistration/>
+            <Footer/>
+
+            </>
+        }
+        >
+
+        </Route>
+
+         <Route path='/orders' 
+        element={
+            <>
+            <HomeNav/>
+            <Orders/>
+            <Footer/>
+
+            </>
+        }
+        >
+
+        </Route>
+
+
+
+
+        
+
+
+
        
       </Routes>
       </BrowserRouter>

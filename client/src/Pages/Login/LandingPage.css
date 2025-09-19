@@ -76,24 +76,3 @@
   }
 }
 
-.landing_cards .card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-}
-
-.landing_cards .card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.card-img-top {
-  max-height: 250px;
-  object-fit: cover;
-}
-.landing_cards{
- margin-left: 100px;
-}
-.shop-now{
-  background-color: black;
-  color: white;
-}

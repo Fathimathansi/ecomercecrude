@@ -1,0 +1,22 @@
+.reset_heading{
+    color: rgb(220, 168, 24) ;
+}
+.reset_btn{
+    width: 100px;
+    height: 40px;
+    border-radius: 15px;
+    background-color: black;
+    color: white;
+    margin-bottom: 10px;
+}
+.full_reset{
+    background-image: url(resetpage.png);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+}

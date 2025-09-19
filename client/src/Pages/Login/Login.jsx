@@ -1,52 +1,36 @@
 import React, { useState } from 'react';
 import './Login.css';
 import img from "../Login/loginimage.png";
-import { Link } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 function Login() {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
-    username: "",
+    email: "",
     password: "",
   });
 
   const [errors, setErrors] = useState({
-    username: "",
+    email: "",
     password: "",
   });
 
+  // ✅ Fix: use e.target instead of event.target
   const handleChange = (e) => {
-    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value,
+      [e.target.name]: e.target.value,
     });
   };
-const navigate = useNavigate();
-  function handleSubmit(e) {
-    e.preventDefault();
-    if (validateForm()) {
-      const storedUsername = localStorage.getItem("firstName");
-      const storedPassword = localStorage.getItem("password");
-
-      
-      if (formData.username === storedUsername && formData.password === storedPassword) {
-        alert("Logged in successfully!");
-        
-        navigate("/home")
-        localStorage.setItem("isLoggedin",true)
-      } else {
-        alert("Invalid credentials. Please try again.");
-      }
-    }
-  }
 
   function validateForm() {
-    let formErrors = { username: "", password: "" };
+    let formErrors = { email: "", password: "" };
     let isValid = true;
 
-    if (!formData.username) {
-      formErrors.username = "Username is required";
+    if (!formData.email) {
+      formErrors.email = "Email is required";
       isValid = false;
     }
 
@@ -62,6 +46,38 @@ const navigate = useNavigate();
     return isValid;
   }
 
+  function handleSubmit(e) {
+  e.preventDefault();
+  if (!validateForm()) {
+    return;
+  }
+
+  axios.post('http://localhost:3000/findone', { email: formData.email })
+    .then((result) => {
+      const user = result.data.user;
+      console.log(user);
+
+      if (!user) {
+        alert("User not found. Please sign up first.");
+        return;
+      }
+
+      if (user.password === formData.password) {
+        // ✅ Save correct user._id into localStorage
+        localStorage.setItem("userId", user._id);
+
+        alert("Login successful!");
+        navigate("/homepage");
+      } else {
+        alert("Invalid email or password.");
+      }
+    })
+    .catch((error) => {
+      console.error("Login error:", error);
+    });
+}
+
+
   return (
     <div className="main" style={{ backgroundImage: `url(${img})` }}>
       <form onSubmit={handleSubmit} className="login-form">
@@ -73,14 +89,14 @@ const navigate = useNavigate();
 
         <input
           className="input"
-          type="text"
+          type="email"
           id="loguser"
-          name="username"
-          placeholder="Username"
-          value={formData.username}
+          name="email"
+          placeholder="Email"
+          value={formData.email}
           onChange={handleChange}
         />
-        {errors.username && <div className="error">{errors.username}</div>}
+        {errors.email && <div className="error">{errors.email}</div>}
 
         <input
           className="input"
@@ -102,7 +118,9 @@ const navigate = useNavigate();
 
         <button type="submit" className="log1">Login</button>
 
-        <p className="signup-text">Don't have an account? <Link className="signup" to="/signup">Signup</Link></p>
+        <p className="signup-text">
+          Don't have an account? <Link className="signup" to="/signup">Signup</Link>
+        </p>
       </form>
     </div>
   );

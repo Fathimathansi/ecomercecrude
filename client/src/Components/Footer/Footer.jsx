@@ -1,13 +1,13 @@
 import React from 'react'
-import "./Footer.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 import { faFacebookF } from '@fortawesome/free-brands-svg-icons';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { faPinterestP } from '@fortawesome/free-brands-svg-icons';
 import { faYoutube} from '@fortawesome/free-brands-svg-icons'
 import { Link } from 'react-router-dom';
+import "./Footer.css"
+
 
 function Footer() {
     return (
@@ -17,15 +17,22 @@ function Footer() {
                    
                 <h6><b className='congo '>CONGO</b>KART</h6>
                
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-        <FontAwesomeIcon className='icons' icon={faFacebookF}/>
-        <FontAwesomeIcon className='icons' icon={faTwitter} />
-        <FontAwesomeIcon className='icons' icon={faInstagram}/>
-        <FontAwesomeIcon className='icons' icon={faPinterestP}  />
-        <FontAwesomeIcon className='icons' icon={faYoutube}/>
-
-      </a>
-
+               
+<a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+  <FontAwesomeIcon className='icons' icon={faFacebookF}/>
+</a>
+<a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+  <FontAwesomeIcon className='icons' icon={faTwitter}/>
+</a>
+<a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+  <FontAwesomeIcon className='icons' icon={faInstagram}/>
+</a>
+<a href="https://pinterest.com" target="_blank" rel="noopener noreferrer">
+  <FontAwesomeIcon className='icons' icon={faPinterestP}/>
+</a>
+<a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
+  <FontAwesomeIcon className='icons' icon={faYoutube}/>
+</a>
 
       
                 </div>

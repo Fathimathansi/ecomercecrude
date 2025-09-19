@@ -1,162 +1,148 @@
-import React, { useState } from 'react';
-import './signup.css';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import "./Signup.css";
 
-function Signup() {
+const Signup = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
-    email: "",
     tel: "",
+    email: "",
     address: "",
-    password: ""
+    password: "",
+    confirmPassword: "",
+    image: null,
   });
 
+  const [preview, setPreview] = useState("");
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
+
+    // validate on change
+    validateField(name, value);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (validateForm()) {
-      localStorage.setItem("firstName", formData.firstName);
-      localStorage.setItem("lastName", formData.lastName);
-      localStorage.setItem("email", formData.email);
-      localStorage.setItem("tel", formData.tel);
-      localStorage.setItem("address", formData.address);
-      localStorage.setItem("password", formData.password);
-      alert("Form submitted successfully");
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setFormData((prev) => ({ ...prev, image: file }));
+      setPreview(URL.createObjectURL(file));
     }
+  };
+
+  const validateField = (name, value) => {
+    let message = "";
+
+    if (!value && name !== "address") {
+      message = "This field is required";
+    }
+ if (name === "firstName" || name === "lastName") {
+    const nameRegex = /^[A-Za-z\s]+$/; // Only letters and spaces
+    if (!nameRegex.test(value)) message = "Only letters are allowed";
+  }
+    if (name === "email") {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(value)) message = "Invalid email address";
+    }
+
+    if (name === "tel") {
+      const phoneRegex = /^\d{10}$/;
+      if (!phoneRegex.test(value)) message = "Phone number must be 10 digits";
+    }
+
+    if (name === "password") {
+      const pwdRegex = /^(?=.*[A-Za-z])(?=.*\d).{6,}$/;
+      if (!pwdRegex.test(value))
+        message = "Password must be at least 6 chars and include a number";
+    }
+
+    if (name === "confirmPassword" && value !== formData.password) {
+      message = "Passwords do not match";
+    }
+
+    setErrors((prev) => ({ ...prev, [name]: message }));
   };
 
   const validateForm = () => {
-    const formErrors = {};
-    let isValid = true;
-
-    if (!formData.firstName) {
-      formErrors.firstName = "First name is required";
-      isValid = false;
-    }
-    if (!formData.lastName) {
-      formErrors.lastName = "Last name is required";
-      isValid = false;
-    }
-    if (!formData.email) {
-      formErrors.email = "Email is required";
-      isValid = false;
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      formErrors.email = "Invalid email format";
-      isValid = false;
-    }
-    if (!formData.tel) {
-      formErrors.tel = "Mobile number is required";
-      isValid = false;
-    }
-    if (!formData.address) {
-      formErrors.address = "Address is required";
-      isValid = false;
-    }
-    if (!formData.password) {
-      formErrors.password = "Password is required";
-      isValid = false;
-    } else if (formData.password.length < 6) {
-      formErrors.password = "Password must be at least 6 characters";
-      isValid = false;
-    }
-
-    setErrors(formErrors);
-    return isValid;
+    const fields = ["firstName", "lastName", "tel", "email", "password", "confirmPassword"];
+    let valid = true;
+    fields.forEach((field) => {
+      validateField(field, formData[field]);
+      if (errors[field]) valid = false;
+    });
+    return valid;
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
+    if (!validateForm()) {
+      alert("Please fix validation errors before submitting");
+      return;
+    }
+
+    try {
+      const data = new FormData();
+      Object.keys(formData).forEach((key) => {
+        if (key !== "confirmPassword" && formData[key]) {
+          data.append(key, formData[key]);
+        }
+      });
+
+      const result = await axios.post("http://localhost:3000/usereg", data, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+
+      alert("Signup successful!");
+      navigate("/login");
+    } catch (error) {
+      console.error("Signup failed:", error.response || error.message);
+      alert("Signup failed. Please try again.");
+    }
+  };
 
   return (
-    <div className="main1">
-      <form className="form-container" onSubmit={handleSubmit}>
-        <h1 className="log">Sign-up</h1>
+    <div className="add-product-container">
+      <h1>Sign Up</h1>
 
-        <div className="input-group">
-          <input
-            type="text"
-            name="firstName"
-            placeholder="First Name"
-            value={formData.firstName}
-            onChange={handleChange}
-          />
-          {errors.firstName && <div className="error">{errors.firstName}</div>}
-        </div>
+      <div className="image-upload-group">
+        {preview && <img src={preview} alt="Preview" className="preview-image" />}
+        <label htmlFor="file-upload" className="custom-file-input">Choose Image</label>
+        <input
+          id="file-upload"
+          type="file"
+          name="image"
+          onChange={handleFileChange}
+          accept="image/*"
+        />
+      </div>
 
-        <div className="input-group">
-          <input
-            type="text"
-            name="lastName"
-            placeholder="Last Name"
-            value={formData.lastName}
-            onChange={handleChange}
-          />
-          {errors.lastName && <div className="error">{errors.lastName}</div>}
-        </div>
+      <form className="add-product-form" onSubmit={handleSubmit}>
+        {["firstName", "lastName", "tel", "email", "address", "password", "confirmPassword"].map((field) => (
+          <div key={field} className="form-group">
+            <label htmlFor={field}>{field === "tel" ? "Phone Number" : field.charAt(0).toUpperCase() + field.slice(1)}</label>
+            <input
+              type={field.includes("password") ? "password" : field === "tel" ? "tel" : "text"}
+              id={field}
+              name={field}
+              value={formData[field]}
+              onChange={handleChange}
+              placeholder={`Enter ${field}`}
+              required={field !== "address"}
+            />
+            {errors[field] && <span className="error">{errors[field]}</span>}
+          </div>
+        ))}
 
-        <div className="input-group">
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={handleChange}
-          />
-          {errors.email && <div className="error">{errors.email}</div>}
-        </div>
-
-        <div className="input-group">
-          <input
-            type="tel"
-            name="tel"
-            placeholder="Mobile Number"
-            value={formData.tel}
-            onChange={handleChange}
-          />
-          {errors.tel && <div className="error">{errors.tel}</div>}
-        </div>
-
-        <div className="input-group">
-          <input
-            type="text"
-            name="address"
-            placeholder="Address"
-            value={formData.address}
-            onChange={handleChange}
-          />
-          {errors.address && <div className="error">{errors.address}</div>}
-        </div>
-
-        <div className="input-group">
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            
-            value={formData.password}
-            onChange={handleChange}
-          />
-             
-          {errors.password && <div className="error">{errors.password}</div>}
-        </div>
-
-        <button type="submit" className="sign_up">Signup</button>
-
-        <p className="last_content text-light">
-          Already have an account? <Link className="login" to="/login">Login</Link>
-        </p>
+        <button type="submit">Sign Up</button>
       </form>
     </div>
   );
-}
+};
 
 export default Signup;

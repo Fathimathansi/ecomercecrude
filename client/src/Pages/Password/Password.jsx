@@ -48,7 +48,7 @@ function Password() {
   };
 
   return (
-    <div className="password-reset">
+    <div className="password-reset1">
       <h1 className="heading">Forgot Password?</h1>
       <p className="text-light">
         Enter your email below to receive your password reset instructions.

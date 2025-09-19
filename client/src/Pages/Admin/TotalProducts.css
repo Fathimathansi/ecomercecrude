@@ -1,0 +1,46 @@
+/* TotalProducts.css */
+.products-container {
+  padding: 20px;
+  background-color: #ecf0f1;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.products-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.products-table th,
+.products-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.products-table th {
+  background-color: #2c3e50;
+  color: white;
+}
+
+.products-table tr:hover {
+  background-color: #f5f5f5;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .products-table th,
+  .products-table td {
+    padding: 10px;
+    font-size: 14px;
+  }
+}

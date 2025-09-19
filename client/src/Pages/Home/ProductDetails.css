@@ -1,20 +1,24 @@
 .card{
     width: 500px;
    
+   
 }
 
 
 
 .product-details-page{
     width: 200px;
+    margin-bottom: 100px;
+   
+   
 }
 .products{
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 100px;
+ 
     
-   
 }
 .product-title{
     padding-left: 100px;

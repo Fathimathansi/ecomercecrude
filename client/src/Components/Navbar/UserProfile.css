@@ -1,0 +1,245 @@
+/* UserProfile.css - Modern Profile Page Styling */
+
+/* Main container for the entire profile page */
+.img-1 {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Profile card container */
+.card-1 {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.1),
+    0 8px 25px rgba(0, 0, 0, 0.08);
+  padding: 40px;
+  max-width: 450px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-1:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    0 25px 70px rgba(0, 0, 0, 0.15),
+    0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Profile image container */
+.img-2 {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: 0 auto 30px;
+  position: relative;
+  overflow: hidden;
+  border: 4px solid #fff;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.2),
+    inset 0 0 0 3px rgba(102, 126, 234, 0.3);
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.img-2:hover {
+  transform: scale(1.05);
+}
+
+.img-2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: opacity 0.3s ease;
+}
+
+.img-2 img:hover {
+  opacity: 0.9;
+}
+
+/* Profile details section */
+.details {
+  text-align: left;
+  margin-top: 20px;
+}
+
+.details p {
+  margin: 15px 0;
+  font-size: 16px;
+  color: #333;
+  font-weight: 500;
+  padding: 12px 20px;
+  background: rgba(102, 126, 234, 0.05);
+  border-radius: 12px;
+  border-left: 4px solid #667eea;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.details p:hover {
+  background: rgba(102, 126, 234, 0.1);
+  transform: translateX(5px);
+}
+
+.details p::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  border-radius: 2px 0 0 2px;
+}
+
+/* Loading state */
+.details p:only-child {
+  text-align: center;
+  color: #666;
+  font-style: italic;
+  background: rgba(200, 200, 200, 0.1);
+  border-left-color: #ccc;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Update Profile Button */
+.update-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 14px 30px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-top: 25px;
+  width: 100%;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.update-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.update-button:hover::before {
+  left: 100%;
+}
+
+.update-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+.update-button:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 10px rgba(102, 126, 234, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .img-1 {
+    padding: 15px;
+    min-height: 100vh;
+  }
+  
+  .card-1 {
+    padding: 30px 25px;
+    margin: 10px;
+    max-width: 100%;
+  }
+  
+  .img-2 {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 25px;
+  }
+  
+  .details p {
+    font-size: 15px;
+    padding: 10px 15px;
+    margin: 12px 0;
+  }
+  
+  .update-button {
+    padding: 12px 25px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-1 {
+    padding: 25px 20px;
+  }
+  
+  .img-2 {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .details p {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+  
+  .update-button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
+
+/* Additional enhancement for profile fields */
+.details p strong {
+  color: #667eea;
+  font-weight: 700;
+}
+
+/* Fallback for missing images */
+.img-2:empty::after {
+  content: "👤";
+  font-size: 60px;
+  color: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* Smooth transitions for all elements */
+* {
+  box-sizing: border-box;
+}
+
+.card-1 * {
+  transition: all 0.3s ease;
+}

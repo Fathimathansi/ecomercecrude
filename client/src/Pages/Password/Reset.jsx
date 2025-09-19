@@ -58,7 +58,7 @@ function Reset() {
   };
 
   return (
-    <div className='full_reset'>
+    <div className='full_reset1'>
       <h1 className='reset_heading'>Reset Password!</h1>
       <p className='tex-light'>
         Your new password must be different<br />from your previous password.

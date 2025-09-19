@@ -1,0 +1,63 @@
+.cart-footer {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border-top: 1px solid #ddd;
+  padding: 15px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px -3px 10px rgba(0, 0, 0, 0.08);
+  z-index: 100;
+}
+
+/* Total section */
+.cart-total {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+.cart-total .label {
+  margin-right: 10px;
+  font-weight: 500;
+  color: #555;
+}
+
+.cart-total .amount {
+  color: #1e7e34; /* green */
+  font-weight: bold;
+  font-size: 20px;
+}
+
+/* Buy Now button */
+.add-to-cart-btn {
+  background: #007bff; /* blue */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.add-to-cart-btn:hover {
+  background: #0056b3;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  .cart-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .add-to-cart-btn {
+    width: 100%;
+  }
+}
