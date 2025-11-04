@@ -12,7 +12,7 @@ const TotalProducts = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/getproduct") // ✅ backend API
+      .get("https://ecomercecrude-app.onrender.com/getproduct") // ✅ backend API
       .then((res) => {
          console.log("API Response:", res.data); // 👀 check shape
         setProducts(res.data.data); // ✅ use response data
