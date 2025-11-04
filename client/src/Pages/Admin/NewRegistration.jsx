@@ -7,19 +7,19 @@ const NewRegistration = () => {
   const [pendingSellers, setPendingSellers] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3000/seller/pending")
+    axios.get("https://ecomercecrude-app.onrender.com/seller/pending")
       .then(res => setPendingSellers(res.data.sellers || []))
       .catch(err => console.error("Error fetching pending sellers:", err));
   }, []);
 
   const handleApprove = id => {
-    axios.put(`http://localhost:3000/seller/approve/${id}`)
+    axios.put(`https://ecomercecrude-app.onrender.com/seller/approve/${id}`)
       .then(() => setPendingSellers(prev => prev.filter(s => s._id !== id)))
       .catch(err => console.error(err));
   };
 
   const handleReject = id => {
-    axios.delete(`http://localhost:3000/seller/reject/${id}`)
+    axios.delete(`https://ecomercecrude-app.onrender.com/seller/reject/${id}`)
       .then(() => setPendingSellers(prev => prev.filter(s => s._id !== id)))
       .catch(err => console.error(err));
   };
