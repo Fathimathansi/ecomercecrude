@@ -9,7 +9,7 @@ const TotalSellers = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/sellergetall") // ✅ backend API
+      .get("https://ecomercecrude-app.onrender.com/sellergetall") // ✅ backend API
       .then((res) => {
         setSellers(res.data.sellers); // ✅ use response data
       })
@@ -20,7 +20,7 @@ const TotalSellers = () => {
    
    useEffect(() => {
     axios
-      .get("http://localhost:3000/sellers") // ✅ only approved sellers
+      .get("https://ecomercecrude-app.onrender.com/sellers") // ✅ only approved sellers
       .then((res) => {
         setSellers(res.data.sellers || []);
       })
