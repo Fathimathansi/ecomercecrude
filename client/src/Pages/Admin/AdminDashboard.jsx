@@ -10,40 +10,40 @@ const AdminDashboard = () => {
 
   useEffect(() => {
     // Fetch stats
-    axios.get("http://localhost:3000/sellergetall")
+    axios.get("https://ecomercecrude-app.onrender.com/sellergetall")
       .then(res => setStats(p => ({ ...p, sellers: res.data.sellers?.length || 0 })));
-    axios.get("http://localhost:3000/getall")
+    axios.get("https://ecomercecrude-app.onrender.com/getall")
       .then(res => setStats(p => ({ ...p, users: res.data.users?.length || 0 })));
-    axios.get("http://localhost:3000/getproduct")
+    axios.get("https://ecomercecrude-app.onrender.com/getproduct")
       .then(res => {
         const data = res.data.data || res.data.products || res.data;
         setStats(p => ({ ...p, products: Array.isArray(data) ? data.length : 0 }));
       });
 
     // Fetch pending sellers
-    axios.get("http://localhost:3000/seller/pending")
+    axios.get("hhttps://ecomercecrude-app.onrender.com/seller/pending")
       .then(res => setPendingSellers(res.data.sellers || []));
 
     // Fetch contact messages
-    axios.get("http://localhost:3000/viewcontact")
+    axios.get("https://ecomercecrude-app.onrender.com/viewcontact")
       .then(res => setMessages(res.data.data || []))
       .catch(err => console.error("Error fetching messages:", err));
   }, []);
 
   const handleApprove = id => {
-    axios.put(`http://localhost:3000/seller/approve/${id}`)
+    axios.put(`https://ecomercecrude-app.onrender.com/seller/approve/${id}`)
       .then(() => setPendingSellers(prev => prev.filter(s => s._id !== id)));
   };
 
   const handleReject = id => {
-    axios.delete(`http://localhost:3000/seller/reject/${id}`)
+    axios.delete(`https://ecomercecrude-app.onrender.com/seller/reject/${id}`)
       .then(() => setPendingSellers(prev => prev.filter(s => s._id !== id)));
   };
 
   const handleDeleteMessage = id => {
     if (!window.confirm("Are you sure you want to delete this message?")) return;
 
-    axios.delete(`http://localhost:3000/deletecontact/${id}`)
+    axios.delete(`https://ecomercecrude-app.onrender.com/deletecontact/${id}`)
       .then(() => setMessages(prev => prev.filter(m => m._id !== id)))
       .catch(err => console.error("Error deleting message:", err));
   };
