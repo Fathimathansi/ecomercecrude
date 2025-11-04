@@ -58,7 +58,7 @@ console.log(Sellerid);
   };
 
 
-    axios.post("http://localhost:3000/products", data, {
+    axios.post("https://ecomercecrude-app.onrender.com/products", data, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
