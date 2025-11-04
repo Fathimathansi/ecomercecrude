@@ -12,7 +12,7 @@ const SellerProfile = () => {
 console.log((SellerId))
     useEffect(() => {
         if (SellerId) {
-            axios.get(`http://localhost:3000/sellerbyid/${(SellerId)}`)
+            axios.get(`https://ecomercecrude-app.onrender.com/sellerbyid/${(SellerId)}`)
                 .then((res) => {
                     console.log(res.data.seller);
                     setSeller(res.data.seller);
