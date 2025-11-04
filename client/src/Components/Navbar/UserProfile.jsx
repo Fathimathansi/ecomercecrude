@@ -12,7 +12,7 @@ const UserProfile = () => {
 console.log(UserId)
     useEffect(() => {
         if (UserId) {
-            axios.get(`http://localhost:3000/userbyid/${UserId}`)
+            axios.get(`https://ecomercecrude-app.onrender.com/userbyid/${UserId}`)
                 .then((res) => {
                     console.log(res.data.user);
                     setUser(res.data.user);
