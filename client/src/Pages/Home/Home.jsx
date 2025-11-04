@@ -12,7 +12,7 @@ function Home() {
 const {category}=useParams()
  useEffect(() => {
   axios
-    .get("http://localhost:3000/getproduct")
+    .get("https://ecomercecrude-app.onrender.com/getproduct")
     .then((response) => {
       const allProducts = response.data.data;
 
