@@ -17,7 +17,7 @@ const ProductList = () => {
             return;
         }
     axios
-      .get(`http://localhost:3000/getproduct`) 
+      .get(`https://ecomercecrude-app.onrender.com/getproduct`) 
       .then((response) => {
         setProducts(response.data.data); 
         console.log(response.data.data);
@@ -32,7 +32,7 @@ const ProductList = () => {
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:3000/deleteproduct/${id}`)
+      .delete(`https://ecomercecrude-app.onrender.com/deleteproduct/${id}`)
       .then(response => {
         console.log(response);
        
