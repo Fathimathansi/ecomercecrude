@@ -23,13 +23,13 @@ const UpdateProduct = () => {
   
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/productid/${id}`)
+      .get(`https://ecomercecrude-app.onrender.com/productid/${id}`)
       .then((response) => {
      setFormData(response.data.data);
 
         
         if (response.data.data.image) {
-          setPreview(`http://localhost:3000/upload/${response.data.data.image.filename}`);
+          setPreview(`https://ecomercecrude-app.onrender.com/upload/${response.data.data.image.filename}`);
         }
       })
       .catch((err) => {
@@ -72,7 +72,7 @@ const UpdateProduct = () => {
     }
 
     axios
-      .put(`http://localhost:3000/updateproduct/${id}`, data)
+      .put(`hhttps://ecomercecrude-app.onrender.com/updateproduct/${id}`, data)
       .then((result) => {
         console.log(result);
         
