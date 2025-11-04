@@ -20,7 +20,7 @@ function ContactUs() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3000/addcontact', formData);
+      const response = await axios.post('https://ecomercecrude-app.onrender.com/addcontact', formData);
       alert(response.data.message);
       setFormData({ name: '', email: '', subject: '', message: '' });
     } catch (err) {
