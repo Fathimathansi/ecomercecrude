@@ -66,7 +66,7 @@ const UpdateUserProfile= () => {
     }
 
     axios
-      .put(`http://localhost:3000/update/${id}`, data)
+      .put(`https://ecomercecrude-app.onrender.com/update/${id}`, data)
       .then((result) => {
         console.log(result);
         
