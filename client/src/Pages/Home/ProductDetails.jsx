@@ -25,7 +25,7 @@ function ProductDetails() {
 
   useEffect(() => {
     if (id) {
-      axios.get(`http://localhost:3000/productid/${id}`)
+      axios.get(`https://ecomercecrude-app.onrender.com/productid/${id}`)
         .then((response) => {
           console.log("Product fetched:", response.data.data);
           setProduct(response.data.data);
