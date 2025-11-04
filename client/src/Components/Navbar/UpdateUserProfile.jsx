@@ -21,13 +21,13 @@ const UpdateUserProfile= () => {
   
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/userbyid/${id}`)
+      .get(`https://ecomercecrude-app.onrender.com/userbyid/${id}`)
       .then((response) => {
      setFormData(response.data.user);
 
         
         if (response.data.user.image) {
-          setPreview(`http://localhost:3000/upload/${response.data.user.image.filename}`);
+          setPreview(`https://ecomercecrude-app.onrender.com/upload/${response.data.user.image.filename}`);
         }
       })
       .catch((err) => {
