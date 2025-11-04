@@ -39,7 +39,7 @@ const CartFooter = ({ orders, onCartUpdate }) => {
     }
 
     try {
-      const response = await axios.post(`http://localhost:3000/buycart/${userId}`);
+      const response = await axios.post(`https://ecomercecrude-app.onrender.com/buycart/${userId}`);
 
       if (response.data.success) {
         alert(response.data.msg || "Purchase successful!");
