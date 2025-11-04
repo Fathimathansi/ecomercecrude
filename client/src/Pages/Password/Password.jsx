@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './password.css';
+import './Password.css';
 import { useNavigate } from 'react-router-dom';
 
 function Password() {
