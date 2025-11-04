@@ -14,7 +14,7 @@ const Orders = () => {
     }
 
     axios
-      .get(`http://localhost:3000/viewallpurchases`)
+      .get(`https://ecomercecrude-app.onrender.com/viewallpurchases`)
       .then((response) => {
         const fetchedOrders = response.data.data;
         if (Array.isArray(fetchedOrders)) {
