@@ -3,6 +3,7 @@ const path =require("path")
 const BodyParser = require('body-parser')
 const cors = require ('cors')
 const Db = require('./Db')
+import 'dotenv/config'
 const Route = require('./Route')
 
 
