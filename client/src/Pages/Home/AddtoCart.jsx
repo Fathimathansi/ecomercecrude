@@ -18,7 +18,7 @@ const AddtoCart = () => {
       return;
     }
 
-    axios.get("http://localhost:3000/viewallorder")
+    axios.get("https://ecomercecrude-app.onrender.com/viewallorder")
       .then(res => {
         const userOrders = res.data.data.filter
         (order => order.UserId === userId);
@@ -35,7 +35,7 @@ const AddtoCart = () => {
   const handleDelete = async (orderId) => {
     try {
       if (window.confirm("Are you sure you want to delete this product?")) {
-        await axios.delete(`http://localhost:3000/deleteorder/${orderId}`);
+        await axios.delete(`https://ecomercecrude-app.onrender.com/deleteorder/${orderId}`);
         setOrders(prevOrders => prevOrders.filter(order => order._id !== orderId));
       }
     } catch (error) {
@@ -60,7 +60,7 @@ const AddtoCart = () => {
             <div className="orderr-card-size-" key={order._id}>
               <div className="orderr-image-wrapper">
                 <img
-                  src={`http://localhost:3000/upload/${order.ProductId?.image?.filename}`}
+                  src={`https://ecomercecrude-app.onrender.com/upload/${order.ProductId?.image?.filename}`}
                   alt={order.ProductId?.name}
                   className="orderr-image-view"
                 />
