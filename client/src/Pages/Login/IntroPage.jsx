@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import img from "../Login/Logo.png";
+import img from "../Login/logo.png";
 
 import './IntroPage.css';
 
