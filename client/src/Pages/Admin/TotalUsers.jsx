@@ -11,7 +11,7 @@ const TotalUsers = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/getall") // ✅ backend API
+      .get("https://ecomercecrude-app.onrender.com/getall") // ✅ backend API
       .then((res) => {
         setUsers(res.data.users); // ✅ use response data
       })
